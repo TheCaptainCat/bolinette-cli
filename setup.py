@@ -16,7 +16,7 @@ setup(
     description='The Bolinette CLI, useful commands for your Bolinette API',
     author='Pierre Chat',
     author_email='pierrechat89@hotmail.fr',
-    url='https://github.com/TheCaptainCat/bolinette',
+    url='https://github.com/TheCaptainCat/bolinette-cli',
     keywords=['Flask', 'Bolinette', 'Web', 'Framework'],
     install_requires=[
         'inflect==4.0.0',
@@ -36,7 +36,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'blnt=bolinette.cli:main'
+            'blnt=bolinette_cli:main'
         ]
     },
 )
