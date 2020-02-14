@@ -4,5 +4,5 @@ from bolinette_cli.parser import Parser
 from bolinette_cli.cli import main
 
 
-cli_version = '0.1.4'
+cli_version = '0.1.5'
 blnt_version = '0.1.5'
