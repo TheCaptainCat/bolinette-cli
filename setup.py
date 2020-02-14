@@ -22,7 +22,7 @@ setup(
         'inflect==4.0.0',
         'Jinja2==2.10.3',
         'pydash==4.7.6',
-        'twine==3.1.1',
+        'twine==3.1.1'
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',
