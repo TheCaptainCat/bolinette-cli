@@ -9,7 +9,7 @@ def project_packages(module):
 
 setup(
     name='Bolinette-CLI',
-    packages=project_packages('bolinette_cli.'),
+    packages=project_packages('bolinette_cli'),
     include_package_data=True,
     version=bolinette_cli.cli_version,
     license='MIT',
