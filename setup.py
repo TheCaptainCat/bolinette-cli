@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-import bolinette_cli
+from bolinette_cli import paths, versions
 
 
 def project_packages(module):
@@ -11,7 +11,7 @@ setup(
     name='Bolinette-CLI',
     packages=project_packages('bolinette_cli'),
     include_package_data=True,
-    version=bolinette_cli.cli_version,
+    version=versions.read_version(paths.dirname(__file__)),
     license='MIT',
     description='The Bolinette CLI, useful commands for your Bolinette API',
     author='Pierre Chat',
@@ -23,7 +23,9 @@ setup(
         'Jinja2==2.10.3',
         'pydash==4.7.6',
         'PyYAML==5.2',
-        'twine==3.1.1'
+        'requests==2.22.0',
+        'twine==3.1.1',
+        'virtualenv==20.0.4'
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',

@@ -16,11 +16,11 @@ logger = Logger()
 
 
 class Console:
-    def print(self, text):
-        print(text)
+    def print(self, text, *, sep=' ', end='\n'):
+        print(text, sep=sep, end=end)
 
-    def error(self, text):
-        print(text, file=sys.stderr)
+    def error(self, text, *, sep=' ', end='\n'):
+        print(text, file=sys.stderr, sep=sep, end=end)
 
 
 console = Console()

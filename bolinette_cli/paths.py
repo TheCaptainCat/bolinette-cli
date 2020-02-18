@@ -1,6 +1,7 @@
 import os
 import random
 import string
+import subprocess
 
 import yaml
 
@@ -15,6 +16,10 @@ def random_string(length):
 
 def mkdir(path):
     os.makedirs(path)
+
+
+def exists(path):
+    return os.path.exists(path)
 
 
 def rename(path, new_path):
@@ -48,3 +53,13 @@ def read_manifest(path):
             return yaml.safe_load(f)
     except FileNotFoundError:
         return None
+
+
+def run_command(command, callback):
+    process = subprocess.Popen(command.split(' '), stdout=subprocess.PIPE)
+    while True:
+        output = process.stdout.readline()
+        if not len(output) and process.poll() is not None:
+            break
+        if output:
+            callback(output.strip().decode())
