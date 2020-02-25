@@ -1,4 +1,4 @@
-from bolinette import Namespace
+from bolinette.routing import Namespace
 from {{ module }}.services import {{ name }}_service
 
 ns = Namespace({{ name }}_service, '/{{ name }}')
