@@ -1,5 +1,3 @@
-import virtualenv
-
 from bolinette_cli import console, paths, templating, versions
 
 
@@ -34,15 +32,8 @@ def create_api(parser, **options):
     paths.rename(paths.join(parser.cwd, 'server'), paths.join(parser.cwd, api_module))
     console.print('* Done')
 
-    if not paths.exists(paths.join(parser.cwd, 'venv')):
-        console.print('Initializing virtual environment...')
-        virtualenv.cli_run(['venv'])
-        console.print('* Done')
-
     if paths.exists(paths.join(parser.cwd, 'venv')):
         console.print('Installing packages...')
-        activate = paths.join(parser.cwd, 'venv', 'bin', 'activate_this.py')
-        exec(compile(open(activate, 'rb').read(), activate, 'exec'), dict(__file__=activate))
         paths.run_command(
             f'{paths.join(parser.cwd, "venv", "bin", "python")} -m pip install -r requirements.txt',
             lambda line: console.print(f'> {line}'))
