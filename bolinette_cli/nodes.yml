@@ -78,10 +78,6 @@
       desc: >-
         Run the API server
       command: run_server
-- name: runserver
-  type: command
-  command: run_server
-  hidden: true
 - name: init
   type: node
   desc: >-
@@ -102,7 +98,7 @@
       type: command
       desc: >-
         Creates a brand new bolinette app, only works if no Bolinette manifest is present
-      command: create_api
+      command: init_app
       args:
         - name: module
           type: inline

@@ -1,7 +1,9 @@
+import platform
+
 from bolinette_cli import console, paths, templating, versions
 
 
-def create_api(parser, **options):
+def init_app(parser, **options):
     manifest = paths.read_manifest(parser.cwd)
     origin = parser.internal_path('files')
     if manifest is not None:
@@ -34,7 +36,16 @@ def create_api(parser, **options):
 
     if paths.exists(paths.join(parser.cwd, 'venv')):
         console.print('Installing packages...')
-        paths.run_command(
-            f'{paths.join(parser.cwd, "venv", "bin", "python")} -m pip install -r requirements.txt',
-            lambda line: console.print(f'> {line}'))
-        console.print('* Done')
+        platform_name = platform.system()
+        command = None
+        if platform_name == 'Linux':
+            command = paths.join(parser.cwd, "venv", "bin", "python")
+        elif:
+            command = paths.join(parser.cwd, "venv", "Scripts", "python.exe")
+        if command is not None:
+            paths.run_command(
+                f'{command} -m pip install -r requirements.txt',
+                lambda line: console.print(f'> {line}'))
+            console.print('* Done')
+        else:
+            console.error('* Unable to install pip dependencies')

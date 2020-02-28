@@ -11,7 +11,7 @@ def create_service(parser, **options):
     else:
         module = manifest.get('module')
         path = parser.root_path(module)
-        origin = parser.internal_path('cli', 'files', 'templates')
+        origin = parser.internal_path('files', 'templates')
 
         model_name = options.get('name')
         class_name = pydash.capitalize(model_name)

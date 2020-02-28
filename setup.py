@@ -24,8 +24,7 @@ setup(
         'pydash==4.7.6',
         'PyYAML==5.2',
         'requests==2.22.0',
-        'twine==3.1.1',
-        'virtualenv==20.0.4'
+        'twine==3.1.1'
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',
