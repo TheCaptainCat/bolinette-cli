@@ -1,7 +1,7 @@
 from bolinette.routing import Namespace
 from {{ module }}.services import {{ name }}_service
 
-ns = Namespace({{ name }}_service, '/{{ name }}')
+ns = Namespace('/{{ name }}', {{ name }}_service)
 
 ns.defaults.get_all()
 ns.defaults.get_one()
@@ -9,5 +9,3 @@ ns.defaults.create()
 ns.defaults.update()
 ns.defaults.patch()
 ns.defaults.delete()
-
-ns.register()

@@ -19,11 +19,9 @@ setup(
     url='https://github.com/TheCaptainCat/bolinette-cli',
     keywords=['Flask', 'Bolinette', 'Web', 'Framework'],
     install_requires=[
-        'inflect==4.0.0',
-        'Jinja2==2.10.3',
-        'pydash==4.7.6',
-        'PyYAML==5.2',
-        'requests==2.22.0',
+        'Jinja2==2.11.1',
+        'PyYAML==5.3.1',
+        'requests==2.23.0',
         'twine==3.1.1'
     ],
     classifiers=[

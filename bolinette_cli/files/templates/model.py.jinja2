@@ -1,23 +1,24 @@
-from bolinette import db, marshalling
+from bolinette import mapping, db
 
 
-class {{ class }}(db.Model):
-    __tablename__ = '{{ plural }}'
+class {{ class }}(db.defs.model):
+__tablename__ = '{{ name }}'
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=False)
+id = db.defs.column(db.types.integer, primary_key=True)
+name = db.defs.column(db.types.string, nullable=False)
 
-    @staticmethod
-    def payloads():
-        yield 'default', [
-            marshalling.Field(marshalling.types.string, 'name', required=True)
-        ]
+@staticmethod
+def payloads():
+yield [
+mapping.Field(db.types.string, key='name', required=True)
+]
 
-    @staticmethod
-    def responses():
-        yield 'default', [
-            marshalling.Field(marshalling.types.string, 'name', required=True)
-        ]
+@staticmethod
+def responses():
+yield [
+mapping.Field(db.types.string, key='name')
+]
 
 
-marshalling.register({{ class }}, '{{ name }}')
+mapping.register({{ class }})
+
