@@ -1,5 +1,3 @@
-import pydash
-
 from bolinette_cli import console, templating, paths
 from bolinette_cli.commands.create_controller import create_controller
 
@@ -13,8 +11,8 @@ def create_service(parser, **options):
         path = parser.root_path(module)
         origin = parser.internal_path('files', 'templates')
 
-        model_name = options.get('name')
-        class_name = pydash.capitalize(model_name)
+        model_name = options.get('name').lower()
+        class_name = model_name[0].upper() + model_name[1:]
 
         params = {
             'module': module,
