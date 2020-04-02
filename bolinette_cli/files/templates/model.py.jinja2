@@ -2,22 +2,22 @@ from bolinette import mapping, db
 
 
 class {{ class }}(db.defs.model):
-__tablename__ = '{{ name }}'
+    __tablename__ = '{{ name }}'
 
-id = db.defs.column(db.types.integer, primary_key=True)
-name = db.defs.column(db.types.string, nullable=False)
+    id = db.defs.column(db.types.integer, primary_key=True)
+    name = db.defs.column(db.types.string, nullable=False)
 
-@staticmethod
-def payloads():
-yield [
-mapping.Field(db.types.string, key='name', required=True)
-]
+    @staticmethod
+    def payloads():
+        yield [
+            mapping.Field(db.types.string, key='name', required=True)
+        ]
 
-@staticmethod
-def responses():
-yield [
-mapping.Field(db.types.string, key='name')
-]
+    @staticmethod
+    def responses():
+        yield [
+            mapping.Field(db.types.string, key='name')
+        ]
 
 
 mapping.register({{ class }})

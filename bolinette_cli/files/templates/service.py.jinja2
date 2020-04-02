@@ -3,8 +3,8 @@ from {{ module }}.models import {{ class }}
 
 
 class {{ class }}Service(BaseService):
-def __init__(self):
-super().__init__({{ class }})
+    def __init__(self):
+        super().__init__({{ class }})
 
 
 {{ name }}_service = {{ class }}Service()
