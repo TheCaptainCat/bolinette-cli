@@ -1,10 +1,9 @@
 from bolinette.services import BaseService
-from {{ module }}.models import {{ class }}
 
 
 class {{ class }}Service(BaseService):
     def __init__(self):
-        super().__init__({{ class }})
+        super().__init__('{{ name }}')
 
 
 {{ name }}_service = {{ class }}Service()
