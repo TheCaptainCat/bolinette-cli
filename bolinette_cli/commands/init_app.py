@@ -40,7 +40,7 @@ def init_app(parser, **options):
         command = None
         if platform_name == 'Linux':
             command = paths.join(parser.cwd, "venv", "bin", "python")
-        elif:
+        elif platform_name == 'Windows':
             command = paths.join(parser.cwd, "venv", "Scripts", "python.exe")
         if command is not None:
             paths.run_command(
