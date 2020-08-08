@@ -1,6 +1,5 @@
+from bolinette_common import paths, files
 from setuptools import setup, find_packages
-
-from bolinette_cli import paths, versions
 
 
 def project_packages(module):
@@ -11,7 +10,7 @@ setup(
     name='Bolinette-CLI',
     packages=project_packages('bolinette_cli'),
     include_package_data=True,
-    version=versions.read_version(paths.dirname(__file__)),
+    version=files.read_version(paths.dirname(__file__)),
     license='MIT',
     description='The Bolinette CLI, useful commands for your Bolinette API',
     author='Pierre Chat',
