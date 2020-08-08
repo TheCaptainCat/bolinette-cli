@@ -17,12 +17,7 @@ setup(
     author_email='pierrechat89@hotmail.fr',
     url='https://github.com/TheCaptainCat/bolinette-cli',
     keywords=['Flask', 'Bolinette', 'Web', 'Framework'],
-    install_requires=[
-        'Jinja2==2.11.1',
-        'PyYAML==5.3.1',
-        'requests==2.23.0',
-        'twine==3.1.1'
-    ],
+    install_requires=files.read_requirements(paths.cwd()),
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
