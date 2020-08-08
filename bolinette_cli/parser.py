@@ -2,8 +2,9 @@ import importlib
 import sys
 
 import yaml
+from bolinette_common import paths, files
 
-from bolinette_cli import Loader, paths
+from bolinette_cli import Loader
 from bolinette_cli.nodes import Node, Command
 
 
@@ -146,7 +147,7 @@ class Parser:
 
     @staticmethod
     def pickup_blnt(cwd):
-        manifest = paths.read_manifest(cwd)
+        manifest = files.read_manifest(cwd)
         if manifest is not None:
             if cwd not in sys.path:
                 sys.path = [cwd] + sys.path

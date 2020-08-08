@@ -1,10 +1,12 @@
 import platform
 
-from bolinette_cli import console, paths, templating, versions
+from bolinette_common import paths, files, console, commands
+
+from bolinette_cli import versions
 
 
 def init_app(parser, **options):
-    manifest = paths.read_manifest(parser.cwd)
+    manifest = files.read_manifest(parser.cwd)
     origin = parser.internal_path('files')
     if manifest is not None:
         return console.error('Manifest file found, '
@@ -30,7 +32,7 @@ def init_app(parser, **options):
     }
 
     console.print('Copying file...')
-    templating.render_directory(paths.join(origin, 'api'), parser.cwd, params)
+    files.render_directory(paths.join(origin, 'api'), parser.cwd, params)
     paths.rename(paths.join(parser.cwd, 'server'), paths.join(parser.cwd, api_module))
     console.print('* Done')
 
@@ -43,7 +45,7 @@ def init_app(parser, **options):
         elif platform_name == 'Windows':
             command = paths.join(parser.cwd, "venv", "Scripts", "python.exe")
         if command is not None:
-            paths.run_command(
+            commands.run_command(
                 f'{command} -m pip install -r requirements.txt',
                 lambda line: console.print(f'> {line}'))
             console.print('* Done')

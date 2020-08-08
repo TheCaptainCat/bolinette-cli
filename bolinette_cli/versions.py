@@ -1,15 +1,5 @@
 import requests
-
-from bolinette_cli import paths
-
-
-def read_version(path):
-    try:
-        with open(paths.join(path, '.version')) as f:
-            for line in f:
-                return line.strip().replace('\n', '')
-    except FileNotFoundError:
-        return None
+from requests import RequestException
 
 
 def get_last_blnt_version():
@@ -18,5 +8,5 @@ def get_last_blnt_version():
         releases = r.json()['releases']
         last = sorted(releases.keys(), reverse=True)
         return last[0]
-    except Exception:
+    except RequestException:
         return None

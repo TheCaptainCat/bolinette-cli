@@ -1,9 +1,9 @@
-from bolinette_cli import console, templating, paths
+from bolinette_common import console, files, paths
 from bolinette_cli.commands.create_controller import create_controller
 
 
 def create_service(parser, **options):
-    manifest = paths.read_manifest(parser.cwd)
+    manifest = files.read_manifest(parser.cwd)
     if manifest is None:
         console.error('No manifest found')
     else:
@@ -20,9 +20,9 @@ def create_service(parser, **options):
             'class': class_name
         }
 
-        templating.copy(paths.join(origin, 'service.py.jinja2'),
-                        paths.join(path, 'services', f'{model_name}.py'), params)
-        paths.append(paths.join(path, 'services', '__init__.py'),
+        files.render_and_write(paths.join(origin, 'service.py.jinja2'),
+                               paths.join(path, 'services', f'{model_name}.py'), params)
+        files.append(paths.join(path, 'services', '__init__.py'),
                      f'from {module}.services.{model_name} import {model_name}_service\n')
 
         if options.get('controller', False):
